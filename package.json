@@ -1,0 +1,8 @@
+{
+  "name": "splush",
+  "bin": "./bin/cli.js",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "request": "^2.81.0"
+  }
+}
