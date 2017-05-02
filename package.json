@@ -1,6 +1,7 @@
 {
   "name": "splush",
   "bin": "./bin/cli.js",
+  "version": "0.1.0",
   "main": "index.js",
   "dependencies": {
     "chalk": "^1.1.3",
