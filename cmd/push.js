@@ -1,6 +1,7 @@
 const chalk = require('chalk')
 const request = require('request')
 const config = require('../lib/config')
+const push = require('../lib/push')
 
 module.exports = (args = []) => {
 	let msg = args.join(' ')
@@ -14,16 +15,10 @@ module.exports = (args = []) => {
 		return
 	}
 
-	request(dest + '/' + code + '/' + msg, (err, res, body) => {
-		if (err) return failMsg(err)
-		try {
-			const b = JSON.parse(body)
-			if (b.success)
-				console.log(chalk.bold.green('@ Splush success!'))
-			else failMsg(b.err)
-		} catch (e) {
-			failMsg(e)
-		}
+	push(msg, code, dest).then(() => {
+		console.log(chalk.bold.green('@ Splush success!'))
+	}).catch((e) => {
+		failMsg(e)
 	})
 }
 
